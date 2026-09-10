@@ -4,75 +4,231 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>OT |d3mon | Socials</title>
-    
-    <link rel="icon" type="image/png" href="assets/d3mon.png">
+    <title>OT | d3mon | Socials</title>
 
+    <!-- Website icon -->
+    <link rel="icon" type="image/png" href="assets/d3mon.png">
 
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-    <main class="container">
+    <div class="background-glow"></div>
 
-        <section class="profile">
+    <main>
 
-            <div class="avatar">
-                <img src="assets/d3mon.png" alt="Profile picture">
+        <!-- Header -->
+        <header class="header">
+
+            <div class="top-pfp">
+                <img src="assets/d3mon.png" alt="OT | d3mon">
             </div>
 
             <h1>OT | d3mon</h1>
 
-            <p class="username">@ot_d3mon</p>
-
-            <p class="bio">
-                Gamer • Developer
+            <p>
+                GAMER + DEVELOPER
             </p>
 
-        </section>
+        </header>
 
 
-        <section class="socials">
+        <!-- Social card -->
+        <section class="social-card">
 
-            <a href="https://discord.com/users/1368298052883841024" class="social discord" target="_blank">
-                <span class="icon">◈</span>
-                <span>Discord</span>
-                <span class="arrow">→</span>
-            </a>    
+            <div class="card-pfp">
+                <img src="assets/d3mon.png" alt="OT | d3mon">
+            </div>
 
-            <a href="https://www.twitch.tv/zdemonssrose" class="social twitch" target="_blank">
-                <span class="icon">◉</span>
-                <span>Twitch</span>
-                <span class="arrow">→</span>
+            <h2>OT | d3mon</h2>
+
+            <div class="description">
+                + 18
+                <span>•</span>
+                Gamer
+                <span>•</span>
+                Developer
+            </div>
+
+
+            <!-- Discord -->
+            <a
+                href="https://discord.com/users/1368298052883841024"
+                target="_blank"
+                class="social-link"
+            >
+
+                <div class="social-icon discord">
+                    💬
+                </div>
+
+                <div class="social-info">
+                    <strong>Discord</strong>
+                    <small>OT | d3mon</small>
+                </div>
+
+                <div class="arrow">
+                    →
+                </div>
+
             </a>
 
-            <a href="https://www.tiktok.com/@ot_d3mon" class="social tiktok" target="_blank">
-                <span class="icon">♪</span>
-                <span>TikTok</span>
-                <span class="arrow">→</span>
+
+            <!-- TikTok -->
+            <a
+                href="https://www.tiktok.com"
+                target="_blank"
+                class="social-link"
+            >
+
+                <div class="social-icon">
+                    ♪
+                </div>
+
+                <div class="social-info">
+                    <strong>TikTok</strong>
+                    <small>@ot_d3mon</small>
+                </div>
+
+                <div class="arrow">
+                    →
+                </div>
+
             </a>
 
-            <a href="https://www.instagram.com/@ot_d3mon" class="social instagram" target="_blank">
-                <span class="icon">◎</span>
-                <span>Instagram</span>
-                <span class="arrow">→</span>
+
+            <!-- YouTube -->
+            <a
+                href="https://www.github.com/zdemonssrose"
+                target="_blank"
+                class="social-link"
+            >
+
+                <div class="social-icon">
+                    ▶
+                </div>
+
+                <div class="social-info">
+                    <strong>Github</strong>
+                    <small>@zdemonssrose</small>
+                </div>
+
+                <div class="arrow">
+                    →
+                </div>
+
             </a>
 
-            <a href="https://github.com/zdemonssrose" class="social github" target="_blank">
-                <span class="icon">⌘</span>
-                <span>GitHub</span>
-                <span class="arrow">→</span>
+
+            <!-- Twitter / X -->
+            <a
+                href="https://twitter.com/zDemonSSRose"
+                target="_blank"
+                class="social-link"
+            >
+
+                <div class="social-icon">
+                    𝕏
+                </div>
+
+                <div class="social-info">
+                    <strong>Twitter</strong>
+                    <small>@zDemonSSRose</small>
+                </div>
+
+                <div class="arrow">
+                    →
+                </div>
+
             </a>
 
         </section>
 
 
         <footer>
-            © 2026 OT | d3mon. All rights reserved.
+            © 2026 OT | d3mon
         </footer>
 
     </main>
+<script>
+
+const card = document.querySelector(".social-card");
+
+card.addEventListener("mousemove", (event) => {
+
+    const rect = card.getBoundingClientRect();
+
+    /* Posición del cursor dentro de la tarjeta */
+
+    const x = event.clientX - rect.left;
+    const y = event.clientY - rect.top;
+
+
+    /* Convertir a porcentaje */
+
+    const xPercent = (x / rect.width) * 100;
+    const yPercent = (y / rect.height) * 100;
+
+
+    /* Intensidad de la inclinación */
+
+    const rotateY =
+        ((xPercent - 50) / 50) * 8;
+
+    const rotateX =
+        ((50 - yPercent) / 50) * 8;
+
+
+    /* Aplicar rotación */
+
+    card.style.transform = `
+        perspective(1000px)
+        rotateX(${rotateX}deg)
+        rotateY(${rotateY}deg)
+        scale(1.02)
+    `;
+
+
+    /* Mover el brillo */
+
+    card.style.setProperty(
+        "--mouse-x",
+        `${xPercent}%`
+    );
+
+    card.style.setProperty(
+        "--mouse-y",
+        `${yPercent}%`
+    );
+
+});
+
+
+/* Cuando el cursor sale */
+
+card.addEventListener("mouseleave", () => {
+
+    card.style.transform = `
+        perspective(1000px)
+        rotateX(0deg)
+        rotateY(0deg)
+        scale(1)
+    `;
+
+    card.style.setProperty(
+        "--mouse-x",
+        "50%"
+    );
+
+    card.style.setProperty(
+        "--mouse-y",
+        "50%"
+    );
+
+});
+
+</script>
 
 </body>
 </html>
